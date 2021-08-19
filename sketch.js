@@ -51,15 +51,15 @@ function draw() {
 
   //call display() to show ropes here
   rope1 = new rope(bob1,roof,-8,0);
-  
+
   //create ellipse shape for multiple bobs here
-Engine.update(engine);
-ellipse(bob1.position.x,bob1.position.y,10);  
+  Engine.update(engine);
+  ellipse(bob1.position.x,bob1.position.y,10);
 }
 
 //Write keyPressed function and apply force on pressing up_arrow key on the first bob.
 function keyPressed(){
 	if (keyDown("UP_ARROW")){
-
+       Matter.Body.applyForce(ball,{x:0,y:0},{x:0.05,y:0});
 	}
 }
