@@ -5,7 +5,6 @@ const Body = Matter.Body;
 const Constraint = Matter.Constraint;
 
 var roof;
-
 //Create multiple bobs, mulitple ropes variable here
 var bob1, bob2, bob3, bob4, bob5;
 var rope1, rope2, rope3, rope4, rope5;
@@ -28,13 +27,13 @@ function setup() {
 		restitution:0.8
 	}
 
-	bob1 = Bodies.circle(200,50,10,ball_options);
+	bob1 = Bodies.circle(20,50,10,ball_options);
 	World.add(world,bob1);
 
 	con = Matter.Constraint.create({
 		pointA:{x:200,y:30},
         bodyB:bob1,
-		pointB:{x:0,y:0},
+		pointB:{x:10,y:0},
 		length:100,
 		stiffness:1
 	});
@@ -51,12 +50,11 @@ function draw() {
   rect(roof.position.x,roof.position.y,230,20);
 
   //call display() to show ropes here
-
+  rope1 = new rope(bob1,roof,-8,0);
   
   //create ellipse shape for multiple bobs here
 Engine.update(engine);
-ellipse(bob1.position.x,bob1.position.y,10);
- 
+ellipse(bob1.position.x,bob1.position.y,10);  
 }
 
 //Write keyPressed function and apply force on pressing up_arrow key on the first bob.
