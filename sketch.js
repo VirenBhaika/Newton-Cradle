@@ -23,22 +23,18 @@ function setup() {
 	roof = Bodies.rectangle(400,100,230,20,roof_options);
     World.add(world,roof);
 
-	var ball_options = {
-		restitution:0.8
-	}
+	bob1 = new Bob(360,380,20);
+	bob2 = new Bob(400,380,20);
+	bob3 = new Bob(440,380,20);
+	bob4 = new Bob(480,380,20);
+	bob5 = new Bob(520,380,20);
 
-	bob1 = Bodies.circle(20,50,10,ball_options);
-	World.add(world,bob1);
+    rope1 = new rope(bob1,roof,-80,0);
+	rope2 = new rope(bob2,roof,-40,0);
+	rope3 = new rope(bob3,roof,0,0); 
+	rope4 = new rope(bob4,roof,40,0); 
+	rope5 = new rope(bob5,roof,80,0);
 
-	con = Matter.Constraint.create({
-		pointA:{x:200,y:30},
-        bodyB:bob1,
-		pointB:{x:10,y:0},
-		length:100,
-		stiffness:1
-	});
-	World.add(world,con);
-	
 	rectMode(CENTER);
 	ellipseMode(RADIUS);
 }
@@ -49,12 +45,20 @@ function draw() {
 
   rect(roof.position.x,roof.position.y,230,20);
 
-  //call display() to show ropes here
-  rope1 = new rope(bob1,roof,-8,0);
+  bob1.display();
+  bob2.display();
+  bob3.display();
+  bob4.display();
+  bob5.display();
 
+  //call display() to show ropes here
+  rope1.display();
+  rope2.display();
+  rope3.display();
+  rope4.display();
+  rope5.display();
   //create ellipse shape for multiple bobs here
   Engine.update(engine);
-  ellipse(bob1.position.x,bob1.position.y,10);
 }
 
 //Write keyPressed function and apply force on pressing up_arrow key on the first bob.
